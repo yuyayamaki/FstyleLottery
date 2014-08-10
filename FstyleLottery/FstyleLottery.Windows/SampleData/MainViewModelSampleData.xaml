@@ -1,0 +1,8 @@
+﻿<ViewModel:MainViewModel xmlns:ViewModel="using:FstyleLottery.ViewModel" xmlns:Command="using:GalaSoft.MvvmLight.Command" CanExcuteStopCommand="False" CanExcuteStartCommand="True" IsInDesignMode="True" IsInDesignModeStatic="False" StartButtonVisibility="Visible" StopButtonVisibility="Collapsed" Text6="ぽぽぽぽーんな話" Text7="震災前後で自分自身が変わったこと" Text4="ドキドキした話" Text5="涙した話" Text2="東北、福島のために何が出来る？何か行動した？" Text3="計画停電、節電政策がITに及ぼす影響" Text1="東日本大震災の時どこにいた？どう行動した？">
+	<ViewModel:MainViewModel.StopCommand>
+		<Command:RelayCommand/>
+	</ViewModel:MainViewModel.StopCommand>
+	<ViewModel:MainViewModel.StartCommand>
+		<Command:RelayCommand/>
+	</ViewModel:MainViewModel.StartCommand>
+</ViewModel:MainViewModel>
