@@ -1,0 +1,82 @@
+﻿<UserControl
+    x:Class="FstyleLottery.Controls.RouletteView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FstyleLottery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="768"
+    d:DesignWidth="1024"
+    FontSize="64" FontFamily="Yu Gothic">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="MaxHeight" Value="80"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Viewbox>
+        <Grid Width="1024" Height="768" Margin="0,60,0,40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.9*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.9*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.7*"/>
+            </Grid.RowDefinitions>
+            <Viewbox StretchDirection="DownOnly" Stretch="Fill">
+                <TextBlock Text="{Binding Text1}" Foreground="#FFC0C0C0">
+                	<TextBlock.Projection>
+                		<PlaneProjection RotationX="-60"/>
+                	</TextBlock.Projection>
+                </TextBlock>
+            </Viewbox>
+            <Viewbox Grid.Row="1" StretchDirection="DownOnly" Stretch="Fill">
+                <TextBlock Text="{Binding Text2}" Foreground="#FFB0B0B0">
+                	<TextBlock.Projection>
+                		<PlaneProjection RotationX="-40"/>
+                	</TextBlock.Projection>
+                </TextBlock>
+            </Viewbox>
+            <Viewbox Grid.Row="2" StretchDirection="DownOnly" Stretch="Fill">
+                <TextBlock Text="{Binding Text3}" Foreground="#FFA0A0A0">
+                	<TextBlock.Projection>
+                		<PlaneProjection RotationX="-20"/>
+                	</TextBlock.Projection>
+                </TextBlock>
+            </Viewbox>
+            <Border Grid.Row="3" BorderBrush="#FFD7D7D7" BorderThickness="0,2">
+                <Viewbox StretchDirection="DownOnly" Stretch="Fill">
+                    <TextBlock Text="{Binding Text4}" Foreground="{ThemeResource ApplicationForegroundThemeBrush}"/>
+                </Viewbox>
+            </Border>
+            <Viewbox Grid.Row="4" StretchDirection="DownOnly" Stretch="Fill">
+                <TextBlock Text="{Binding Text5}" Foreground="#FFA0A0A0">
+                	<TextBlock.Projection>
+                		<PlaneProjection RotationX="20"/>
+                	</TextBlock.Projection>
+                </TextBlock>
+            </Viewbox>
+            <Viewbox Grid.Row="5" StretchDirection="DownOnly" Stretch="Fill">
+                <TextBlock Text="{Binding Text6}" Foreground="#FFB0B0B0">
+                	<TextBlock.Projection>
+                		<PlaneProjection RotationX="40"/>
+                	</TextBlock.Projection>
+                </TextBlock>
+            </Viewbox>
+            <Viewbox Grid.Row="6" StretchDirection="DownOnly" Stretch="Fill">
+                <TextBlock Text="{Binding Text7}" Foreground="#FFC0C0C0">
+                	<TextBlock.Projection>
+                		<PlaneProjection RotationX="60"/>
+                	</TextBlock.Projection>
+                </TextBlock>
+            </Viewbox>
+        </Grid>
+        
+    </Viewbox>
+</UserControl>

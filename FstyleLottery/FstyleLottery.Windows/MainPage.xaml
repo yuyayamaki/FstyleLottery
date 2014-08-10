@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="FstyleLottery.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FstyleLottery"
+    xmlns:controls="using:FstyleLottery.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:common="using:FstyleLottery.Common"
+    FontFamily="Yu Gothic" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="EditItemsAppBarButton" Icon="Edit" Click="EditItemsAppBarButton_Click"/>
+            <AppBarButton x:Uid="ClearElectedItemsAppBarButton" Icon="UnFavorite"/>
+            <AppBarToggleButton x:Uid="LegendModeAppBarButton" Icon="Switch"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" MinWidth="1024"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ContentControl Grid.Column="1" Padding="0,0,0,40" HorizontalAlignment="Right" VerticalAlignment="Top" >
+                <Grid>
+                    <Image Source="Assets/efstakun.png" Margin="-260,-300,0,0" Stretch="UniformToFill"/>
+                    <Rectangle Margin="-260,-300,0,0">
+                    	<Rectangle.Fill>
+                    		<LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    			<GradientStop Color="#E5FFFFFF" Offset="0"/>
+                    			<GradientStop Color="Transparent" Offset="0.5"/>
+                    		</LinearGradientBrush>
+                    	</Rectangle.Fill>
+                    </Rectangle>
+                </Grid>
+            </ContentControl>
+
+            <controls:RouletteView Grid.RowSpan="2"/>
+            <Viewbox Grid.ColumnSpan="2" Grid.Row="1" Margin="30" HorizontalAlignment="Right">
+                <Grid>
+                    <Button x:Uid="StartButton" Content="Start" FontSize="90" Width="260" Height="132" Command="{Binding StartCommand}" Foreground="White" Style="{StaticResource StartButtonStyle}" Visibility="{Binding StartButtonVisibility}"/>
+                    <Button x:Uid="StopButton" Content="Stop" FontSize="90" Width="260" Height="132" Command="{Binding StopCommand}" Foreground="White" Style="{StaticResource StopButtonStyle}" Visibility="{Binding StopButtonVisibility}"/>
+                </Grid>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</Page>

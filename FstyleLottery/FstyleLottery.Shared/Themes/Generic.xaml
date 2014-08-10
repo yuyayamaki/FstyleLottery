@@ -1,0 +1,34 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:FstyleLottery.Controls">
+
+    <Style TargetType="controls:NumericUpDown">
+        <Setter Property="FontSize" Value="96"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:NumericUpDown">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border.Resources>
+                            <Style TargetType="RepeatButton">
+                                <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
+                                <Setter Property="FontSize" Value="54"/>
+                            </Style>
+                        </Border.Resources>
+                        <StackPanel>
+                            <RepeatButton Name="UpButtonPart" Content="" />
+                            <TextBlock Text="{Binding Value, RelativeSource={RelativeSource TemplatedParent}}" 
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"/>
+                            <RepeatButton Name="DownButtonPart" Content="" Margin="0,-12,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
