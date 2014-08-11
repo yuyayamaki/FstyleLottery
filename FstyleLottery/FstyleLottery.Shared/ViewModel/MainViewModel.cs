@@ -34,16 +34,59 @@ namespace FstyleLottery.ViewModel
             lotteryModel = App.Model;
             lotteryModel.SetTextLotteryItems();
             lotteryModel.GenerateLotteryItems();
-            this.lotteryItems = lotteryModel.MainLotteryItems;
-            this.actualLotteryItemsCount = lotteryItems.Count;
+
+            this.lotteryViewItems.AddRange(GetStringListFromLotteryItems(lotteryModel.MainLotteryItems).ToArray());
+            if(lotteryModel.MainLotteryItems.Count <= 6)
+            {
+                switch (lotteryModel.MainLotteryItems.Count)
+	            {
+                    case 2:
+                        for (int i = 0; i < 2; i++)
+                        {
+                            lotteryViewItems.Add(lotteryModel.MainLotteryItems[0].Text);
+                            lotteryViewItems.Add(lotteryModel.MainLotteryItems[1].Text);
+                        }
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[0].Text);
+                        break;
+                    case 3:
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[0].Text);
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[1].Text);
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[2].Text);
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[0].Text);
+                        break;
+                    case 4:
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[0].Text);
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[1].Text);
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[2].Text);
+                        break;
+                    case 5:
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[0].Text);
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[1].Text);
+                        break;
+                    case 6:
+                        lotteryViewItems.Add(lotteryModel.MainLotteryItems[0].Text);
+                        break;
+	            }
+
+            }
+            
 
             this.setInitialItems();
+        }
+
+        private List<string> GetStringListFromLotteryItems(ObservableCollection<LotteryItem> observableCollection)
+        {
+            var tempList = new List<string>();
+            foreach (var item in observableCollection)
+	        {
+                tempList.Add(item.Text);
+	        }
+            return tempList;
         }
     
         private LotteryModel lotteryModel;
 
-        private int actualLotteryItemsCount;
-        private ObservableCollection<LotteryItem> lotteryItems;
+        private List<string> lotteryViewItems = new List<string>();
 
         private int currentFirstItemIndex = 6;
 
@@ -265,9 +308,46 @@ namespace FstyleLottery.ViewModel
             Text4 = _text5;
             Text5 = _text6;
             Text6 = _text7;
-            Text7 = lotteryItems[currentFirstItemIndex].Text;
+            
+            if(lotteryModel.MainLotteryItems.Count >= 7)
+                Text7 = lotteryViewItems[currentFirstItemIndex];
+            else
+            {
+                switch (lotteryModel.MainLotteryItems.Count)
+	            {
+                    case 6:
+                        if(currentFirstItemIndex + 1 > 6)
+                            currentFirstItemIndex-=6;
+                        Text7 = lotteryViewItems[currentFirstItemIndex + 1];
+                        break;
+                    case 5:
+                        if (currentFirstItemIndex + 1 > 5)
+                            currentFirstItemIndex -= 5;
+                        Text7 = lotteryViewItems[currentFirstItemIndex + 2];
+                        break;
+                    case 4:
+                        if (currentFirstItemIndex + 1 > 4)
+                            currentFirstItemIndex -= 4;
+                        Text7 = lotteryViewItems[currentFirstItemIndex];
+                        break;
+                    case 3:
+                        while (currentFirstItemIndex + 1 > 3)
+	                    {
+                            currentFirstItemIndex -= 3;        
+	                    }
+                        Text7 = lotteryViewItems[currentFirstItemIndex];
+                        break;
+                    case 2:
+                        while (currentFirstItemIndex + 1 > 2)
+                        {
+                            currentFirstItemIndex -= 2;
+                        }
+                        Text7 = lotteryViewItems[currentFirstItemIndex];
+                        break;
+                }
+            }
 
-            if (currentFirstItemIndex == actualLotteryItemsCount - 1)
+            if (currentFirstItemIndex == lotteryModel.MainLotteryItems.Count - 1)
             {
                 currentFirstItemIndex = 0;
             }
@@ -279,13 +359,13 @@ namespace FstyleLottery.ViewModel
 
         private void setInitialItems()
         {
-            Text1 = lotteryItems[0].Text;
-            Text2 = lotteryItems[1].Text;
-            Text3 = lotteryItems[2].Text;
-            Text4 = lotteryItems[3].Text;
-            Text5 = lotteryItems[4].Text;
-            Text6 = lotteryItems[5].Text;
-            Text7 = lotteryItems[6].Text;
+            Text1 = lotteryViewItems[0];
+            Text2 = lotteryViewItems[1];
+            Text3 = lotteryViewItems[2];
+            Text4 = lotteryViewItems[3];
+            Text5 = lotteryViewItems[4];
+            Text6 = lotteryViewItems[5];
+            Text7 = lotteryViewItems[6];
         }
 
         private async void Play(string soundFileUrl)

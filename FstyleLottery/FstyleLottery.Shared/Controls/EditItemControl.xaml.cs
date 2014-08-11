@@ -54,7 +54,11 @@ namespace FstyleLottery.Controls
 
         private void NumericUpDown_ValueChanged(object sender)
         {
-            NumberLottteryItemsCount = int.Parse(thousandsPlaceNumber.Value.ToString() + hundredsPlaceNumber.Value.ToString() + tensPlaceNumber.Value.ToString() + onesPlaceNumber.Value.ToString());   
+            int tempNumberCount = int.Parse(thousandsPlaceNumber.Value.ToString() + hundredsPlaceNumber.Value.ToString() + tensPlaceNumber.Value.ToString() + onesPlaceNumber.Value.ToString());
+            if (tempNumberCount >= 2)
+                NumberLottteryItemsCount = int.Parse(thousandsPlaceNumber.Value.ToString() + hundredsPlaceNumber.Value.ToString() + tensPlaceNumber.Value.ToString() + onesPlaceNumber.Value.ToString());
+            else
+                onesPlaceNumber.Value = 2;
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

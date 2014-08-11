@@ -631,7 +631,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Text="{Binding Text, Mode=TwoWay}" FontSize="32" HorizontalAlignment="Stretch" MaxLength="25"/>
+                            <TextBox Text="{Binding Text, Mode=TwoWay}" Padding="11,11,11,0" FontSize="32" HorizontalAlignment="Stretch" MaxLength="25"/>
                             <Button Grid.Column="1" Content="" FontFamily="Segoe UI Symbol" FontSize="32" Click="DeleteButton_Click" Margin="5,0,16,0" Height="70" />
                         </Grid>
                     </DataTemplate>
@@ -694,7 +694,7 @@
                             <ScrollViewer x:Name="ScrollViewer" AutomationProperties.AccessibilityView="Raw" BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" Padding="{TemplateBinding Padding}" TabNavigation="{TemplateBinding TabNavigation}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
                                 <StackPanel>
                                     <ItemsPresenter/>
-                                    <Button Content="" Margin="7,0" FontSize="32" FontFamily="Segoe UI Symbol" Click="AddButton_Click" Height="70"/>
+                                    <Button Content="" Margin="5,0" FontSize="32" FontFamily="Segoe UI Symbol" Click="AddButton_Click" Height="70"/>
                                 </StackPanel>
                             </ScrollViewer>
                         </Border>
