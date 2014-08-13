@@ -31,7 +31,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helper\InvertedBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\NumberModeToFlipViewIndexConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\WavePlayer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\EditItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\efstakun.scale-100.png" />
     <Content Include="$(MSBuildThisFileDirectory)DataModel\SampleData.json" />

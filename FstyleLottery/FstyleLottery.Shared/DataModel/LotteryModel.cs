@@ -158,5 +158,12 @@ namespace FstyleLottery.DataModel
             }
         }
 
+        public void ResetAllIsNotYet()
+        {
+            foreach (var item in MainLotteryItems)
+            {
+                item.IsNotYet = true;
+            }
+        }
     }
 }

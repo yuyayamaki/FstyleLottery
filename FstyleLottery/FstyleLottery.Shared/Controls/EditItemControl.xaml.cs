@@ -58,18 +58,23 @@ namespace FstyleLottery.Controls
             if (tempNumberCount >= 2)
                 NumberLottteryItemsCount = int.Parse(thousandsPlaceNumber.Value.ToString() + hundredsPlaceNumber.Value.ToString() + tensPlaceNumber.Value.ToString() + onesPlaceNumber.Value.ToString());
             else
+            {
                 onesPlaceNumber.Value = 2;
+                NumberLottteryItemsCount = 2;
+            }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            var button = (Button)sender;
-            if (button.DataContext is LotteryItem)
-            {                
-                var deleteme = (LotteryItem)button.DataContext;
-                ((LotteryModel)this.DataContext).TextLotteryItems.Remove(deleteme);
+            if (((LotteryModel)this.DataContext).TextLotteryItems.Count > 2)
+            {
+                var button = (Button)sender;
+                if (button.DataContext is LotteryItem)
+                {
+                    var deleteme = (LotteryItem)button.DataContext;
+                    ((LotteryModel)this.DataContext).TextLotteryItems.Remove(deleteme);
+                }
             }
-
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

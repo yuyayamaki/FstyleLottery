@@ -43,7 +43,7 @@ namespace FstyleLottery
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
 
-            //this.DataContext = new FstyleLottery.ViewModel.EditItemViewModel();
+            App.Model.ResetAllIsNotYet();
             this.DataContext = App.Model;
         }
 

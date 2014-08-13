@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using System.Linq;
 
 namespace FstyleLottery.ViewModel
 {
@@ -28,6 +29,24 @@ namespace FstyleLottery.ViewModel
             changeIntervalDispatcherTimer = new DispatcherTimer();
             changeIntervalDispatcherTimer.Tick += changeIntervalDispatcherTimer_Tick;
             changeIntervalDispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+
+            Windows.UI.Xaml.Window.Current.CoreWindow.KeyDown += (sender, arg) =>
+            {
+                if (arg.VirtualKey == Windows.System.VirtualKey.Enter
+                    || arg.VirtualKey == Windows.System.VirtualKey.Space)
+                {
+                    if(StartButtonVisibility == Visibility.Visible)
+                    {
+                        if (_canExcuteStartCommand == true)
+                            StartCommand.Execute(null);
+                    }
+                    else
+                    {
+                        if (_canExcuteStopCommand == true)
+                            StopCommand.Execute(null);
+                    }
+                }
+            };
 
             StartButtonVisibility = Visibility.Visible;
 
@@ -287,15 +306,21 @@ namespace FstyleLottery.ViewModel
                 }
                 else
                 {
-                    rouletteDispatcherTimer.Stop();
-                    ((DispatcherTimer)sender).Stop();
-                    isStopButtonClicked = false;
-                    CanExcuteStartCommand = true;
+                    if (lotteryModel.MainLotteryItems.Where(item => item.Text == _text4 && item.IsNotYet == true).Count() > 0)
+                    {
+                        lotteryModel.MainLotteryItems.Where(item => item.Text == _text4 && item.IsNotYet == true).First().IsNotYet = false;
 
-                    Task.WaitAll(Task.Delay(TimeSpan.FromSeconds(1)));
+                        rouletteDispatcherTimer.Stop();
+                        ((DispatcherTimer)sender).Stop();
+                        isStopButtonClicked = false;
+                        if (lotteryModel.MainLotteryItems.Where(item => item.IsNotYet == true).Count() > 0)
+                            CanExcuteStartCommand = true;
 
-                    rouletteMusicPlayer.Stop();
-                    this.Play("ms-appx:///SoundFiles/ji_017.wav");
+                        Task.WaitAll(Task.Delay(TimeSpan.FromSeconds(1)));
+
+                        rouletteMusicPlayer.Stop();
+                        this.Play("ms-appx:///SoundFiles/ji_017.wav");
+                    }
                 }
             }
         }
