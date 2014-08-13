@@ -12,9 +12,12 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:Uid="EditItemsAppBarButton" Icon="Edit" Click="EditItemsAppBarButton_Click"/>
-            <AppBarButton x:Uid="ClearElectedItemsAppBarButton" Icon="UnFavorite"/>
-            <AppBarToggleButton x:Uid="LegendModeAppBarButton" Icon="Switch"/>
+            <AppBarButton x:Uid="EditItemsAppBarButton" Icon="Edit" Command="{Binding CleanUpCommand}" Click="EditItemsAppBarButton_Click"/>
+            <AppBarToggleButton x:Uid="LegendModeAppBarButton" IsChecked="{Binding IsLegendMode, Mode=TwoWay}">
+                <AppBarToggleButton.Icon>
+                    <BitmapIcon UriSource="Assets/LegendIcon.png"/>
+                </AppBarToggleButton.Icon>
+            </AppBarToggleButton>
         </CommandBar>
     </Page.BottomAppBar>
     

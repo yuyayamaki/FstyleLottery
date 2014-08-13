@@ -23,13 +23,16 @@ namespace FstyleLottery.ViewModel
 
         public MainViewModel()
         {
+            // Timer for tick
             rouletteDispatcherTimer = new DispatcherTimer();
             rouletteDispatcherTimer.Tick += rouletteDispatcherTimer_Tick;
 
+            // Timer for changing the interval of tick
             changeIntervalDispatcherTimer = new DispatcherTimer();
             changeIntervalDispatcherTimer.Tick += changeIntervalDispatcherTimer_Tick;
             changeIntervalDispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
 
+            // Hook Enter key and Space key for Start/Stop Button
             Windows.UI.Xaml.Window.Current.CoreWindow.KeyDown += (sender, arg) =>
             {
                 if (arg.VirtualKey == Windows.System.VirtualKey.Enter
@@ -55,6 +58,8 @@ namespace FstyleLottery.ViewModel
             lotteryModel.GenerateLotteryItems();
 
             this.lotteryViewItems.AddRange(GetStringListFromLotteryItems(lotteryModel.MainLotteryItems).ToArray());
+
+            // Case of less than 7 items
             if(lotteryModel.MainLotteryItems.Count <= 6)
             {
                 switch (lotteryModel.MainLotteryItems.Count)
@@ -197,10 +202,31 @@ namespace FstyleLottery.ViewModel
             }
         }
 
+        // LegendMode means do not care the item has already elected
+        private bool _isLegendMode = false;
+        public bool IsLegendMode
+        {
+            get
+            {
+                return _isLegendMode;
+            }
+            set
+            {
+                Set(ref _isLegendMode, value);
+                if (value)
+                {
+                    lotteryModel.ResetAllIsNotYet();
+                    if (StartButtonVisibility == Visibility.Visible && CanExcuteStartCommand == false)
+                        CanExcuteStartCommand = true;
+                }
+            }
+        }
+
         private int currentIntervalSeconds;
 
         private RelayCommand _startCommand;
         private RelayCommand _stopCommand;
+        private RelayCommand _cleanUpCommand;
   
         private bool _canExcuteStartCommand = true;
         private bool _canExcuteStopCommand = false;
@@ -274,6 +300,25 @@ namespace FstyleLottery.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets the CleanUpCommand.
+        /// </summary>
+        public RelayCommand CleanUpCommand
+        {
+            get
+            {
+                return _cleanUpCommand
+                    ?? (_cleanUpCommand = new RelayCommand(
+                                          () =>
+                                          {
+                                              rouletteDispatcherTimer.Stop();
+                                              changeIntervalDispatcherTimer.Stop();
+                                              wavePlayer.Dispose();
+                                              rouletteMusicPlayer.Dispose();
+                                          }));
+            }
+        }
+
         private bool isStopButtonClicked = false;
 
         private void rouletteDispatcherTimer_Tick(object sender, object e)
@@ -306,21 +351,29 @@ namespace FstyleLottery.ViewModel
                 }
                 else
                 {
-                    if (lotteryModel.MainLotteryItems.Where(item => item.Text == _text4 && item.IsNotYet == true).Count() > 0)
+                    if (_isLegendMode == false)
                     {
-                        lotteryModel.MainLotteryItems.Where(item => item.Text == _text4 && item.IsNotYet == true).First().IsNotYet = false;
-
-                        rouletteDispatcherTimer.Stop();
-                        ((DispatcherTimer)sender).Stop();
-                        isStopButtonClicked = false;
-                        if (lotteryModel.MainLotteryItems.Where(item => item.IsNotYet == true).Count() > 0)
-                            CanExcuteStartCommand = true;
-
-                        Task.WaitAll(Task.Delay(TimeSpan.FromSeconds(1)));
-
-                        rouletteMusicPlayer.Stop();
-                        this.Play("ms-appx:///SoundFiles/ji_017.wav");
+                        if (lotteryModel.MainLotteryItems.Where(item => item.Text == _text4 && item.IsNotYet == true).Count() > 0)
+                        {
+                            // Mark as has already elected
+                            lotteryModel.MainLotteryItems.Where(item => item.Text == _text4 && item.IsNotYet == true).First().IsNotYet = false;
+                        }
+                        else
+                            // Skip this item
+                            return;
                     }
+
+                    rouletteDispatcherTimer.Stop();
+                    ((DispatcherTimer)sender).Stop();
+                    isStopButtonClicked = false;
+                    if (lotteryModel.MainLotteryItems.Where(item => item.IsNotYet == true).Count() > 0)
+                        CanExcuteStartCommand = true;
+
+                    Task.WaitAll(Task.Delay(TimeSpan.FromSeconds(1)));
+
+                    rouletteMusicPlayer.Stop();
+                    this.Play("ms-appx:///SoundFiles/ji_017.wav");
+                    
                 }
             }
         }
