@@ -19,7 +19,7 @@
     </UserControl.Resources>
     
     <Viewbox>
-        <Grid Width="1024" Height="768" Margin="0,60,0,40">
+        <Grid Width="1024" Height="768" Margin="0,40,0,60">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.7*"/>
                 <RowDefinition Height="0.8*"/>

@@ -794,20 +794,19 @@
                   SelectedIndex="{Binding IsNumberMode, Converter={StaticResource numberModeToFlipViewIndexConv}, Mode=TwoWay}">
             <FlipViewItem>
                 <Grid>
-                    <!--<controls:AddRemoveItemsControl ItemsSource="{Binding TextLotteryItems}" />-->
                     <ListBox ItemsSource="{Binding TextLotteryItems}" />
                 </Grid>
             </FlipViewItem>
             <FlipViewItem>
                 <StackPanel>
-                    <TextBlock Foreground="#FF68217A" Text="抽選の最終番号" FontSize="40" Margin="0,0,0,20"/>
+                    <TextBlock Foreground="#FF68217A" x:Uid="LastLotteryNumber" Text="抽選の最終番号" FontSize="40" Margin="0,0,0,20"/>
                     <StackPanel Orientation="Horizontal">
                         <controls:NumericUpDown x:Name="thousandsPlaceNumber" ValueChanged="NumericUpDown_ValueChanged"/>
                         <controls:NumericUpDown x:Name="hundredsPlaceNumber" ValueChanged="NumericUpDown_ValueChanged"/>
                         <controls:NumericUpDown x:Name="tensPlaceNumber" ValueChanged="NumericUpDown_ValueChanged"/>
                         <controls:NumericUpDown x:Name="onesPlaceNumber" ValueChanged="NumericUpDown_ValueChanged"/>
                     </StackPanel>
-                    <ToggleSwitch Margin="0,20" OffContent="昇順" OnContent="ランダム" Header="数字の順序" FontSize="40"
+                    <ToggleSwitch x:Uid="SortingOrder" Margin="0,20" OffContent="昇順" OnContent="ランダム" Header="数字の順序" FontSize="40"
                                   IsOn="{Binding IsShuffled, Mode=TwoWay}"/>
                 </StackPanel>
             </FlipViewItem>

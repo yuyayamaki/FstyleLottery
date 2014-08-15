@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,31 +117,91 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NavigationFailedExceptionMessage" xml:space="preserve">
-    <value>ナビゲーションに失敗しました。</value>
+  <data name="About.Title" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="StartButton.Content" xml:space="preserve">
-    <value>開始</value>
+  <data name="AboutString" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="StopButton.Content" xml:space="preserve">
-    <value>停止</value>
+  <data name="AppName" xml:space="preserve">
+    <value>F-Style Lottery</value>
   </data>
-  <data name="EditItemsAppBarButton.Label" xml:space="preserve">
-    <value>抽選項目の編集</value>
-  </data>
-  <data name="PageTitle.Text" xml:space="preserve">
-    <value>抽選項目の編集</value>
+  <data name="By.Text" xml:space="preserve">
+    <value>Publisher</value>
   </data>
   <data name="ClearElectedItemsAppBarButton.Label" xml:space="preserve">
-    <value>当選項目をクリア</value>
+    <value>Clear Elected Items</value>
+  </data>
+  <data name="EditItemsAppBarButton.Label" xml:space="preserve">
+    <value>Edit Lottery Items</value>
+  </data>
+  <data name="LastLotteryNumber.Text" xml:space="preserve">
+    <value>Last loterry number</value>
   </data>
   <data name="LegendModeAppBarButton.Label" xml:space="preserve">
-    <value>伝説モード</value>
+    <value>Include Elected Items</value>
+  </data>
+  <data name="LotteryItem1" xml:space="preserve">
+    <value>Beverages</value>
+  </data>
+  <data name="LotteryItem2" xml:space="preserve">
+    <value>Condiments</value>
+  </data>
+  <data name="LotteryItem3" xml:space="preserve">
+    <value>Jams, Preserves</value>
+  </data>
+  <data name="LotteryItem4" xml:space="preserve">
+    <value>Dried Fruit &amp; Nuts</value>
+  </data>
+  <data name="LotteryItem5" xml:space="preserve">
+    <value>Canned Fruit &amp; Vegetables</value>
+  </data>
+  <data name="LotteryItem6" xml:space="preserve">
+    <value>Baked Goods &amp; Mixes</value>
+  </data>
+  <data name="LotteryItem7" xml:space="preserve">
+    <value>Canned Meat</value>
+  </data>
+  <data name="NavigationFailedExceptionMessage" xml:space="preserve">
+    <value>Navigation failed!</value>
   </data>
   <data name="NumbersTabHeader.Content" xml:space="preserve">
-    <value>数字</value>
+    <value>Numbers</value>
+  </data>
+  <data name="PageTitle.Text" xml:space="preserve">
+    <value>Edit Lottery Items</value>
+  </data>
+  <data name="SnapViewMessage.Text" xml:space="preserve">
+    <value>Switch back to fullscreen to play.</value>
+  </data>
+  <data name="SortingOrder.Header" xml:space="preserve">
+    <value>Sorting order of numbers</value>
+  </data>
+  <data name="SortingOrder.OffContent" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
+  <data name="SortingOrder.OnContent" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="SoundFilesAgreementText.Text" xml:space="preserve">
+    <value>The sound files this application uses given on 01SoundEarth. Those sound files licensed under a Creative Commons License.</value>
+  </data>
+  <data name="SoundFilesAgreementTitle.Content" xml:space="preserve">
+    <value>Free Sound Material 01SoundEarth</value>
+  </data>
+  <data name="StartButton.Content" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="StopButton.Content" xml:space="preserve">
+    <value>Stop</value>
   </data>
   <data name="TextTabHeader.Content" xml:space="preserve">
-    <value>文字列</value>
+    <value>Text</value>
+  </data>
+  <data name="UiAppName.Text" xml:space="preserve">
+    <value>F-Style Lottery</value>
+  </data>
+  <data name="Version.Text" xml:space="preserve">
+    <value>Version</value>
   </data>
 </root>

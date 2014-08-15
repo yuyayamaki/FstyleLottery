@@ -17,6 +17,9 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using FstyleLottery.Common;
 using FstyleLottery.DataModel;
+#if WINDOWS_APP
+using Windows.UI.ApplicationSettings;
+#endif
 
 // ユニバーサル ハブ アプリケーション プロジェクト テンプレートについては、http://go.microsoft.com/fwlink/?LinkID=391955 を参照してください
 
@@ -162,5 +165,26 @@ namespace FstyleLottery
             await SuspensionManager.SaveAsync();
             deferral.Complete();
         }
+
+#if WINDOWS_APP
+        protected override void OnWindowCreated(WindowCreatedEventArgs args)
+        {
+            SettingsPane.GetForCurrentView().CommandsRequested += OnCommandsRequested;
+        }
+
+        private void OnCommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            var resourceLoader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            args.Request.ApplicationCommands.Add(new SettingsCommand(
+                "AboutId", resourceLoader.GetString("AboutString"), (handler) => ShowAboutFlyout()));
+        }
+
+        public void ShowAboutFlyout()
+        {
+            var aboutFlyout = new AboutFlyout();
+            aboutFlyout.Show();
+        }
+#endif
     }
 }

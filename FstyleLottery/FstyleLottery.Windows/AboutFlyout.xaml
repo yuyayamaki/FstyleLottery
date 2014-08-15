@@ -1,0 +1,39 @@
+﻿<SettingsFlyout
+    x:Class="FstyleLottery.AboutFlyout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FstyleLottery"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="バージョン情報"
+    x:Uid="About"
+    d:DesignWidth="346" Loaded="SettingsFlyout_Loaded">
+
+    <!-- この StackPanel はコンテンツ セクションの垂直レイアウト用のルート パネルとして機能します -->
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+        <!-- 以下の StackPanel では個々のコンテンツ セクションを定義します -->
+
+        <!-- コンテンツ セクション 1-->
+        <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+
+            <!-- セクション 1 ヘッダー -->
+            <TextBlock x:Uid="UiAppName" Margin="0,0,0,25" Text="エフスタ!!抽選" Style="{StaticResource TitleTextBlockStyle}" />
+
+            <!-- セクション 1 ボディ -->
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" x:Uid="By" Text="発行者：" />
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="57,20,0,25" TextWrapping="Wrap" Text="Yuya Yamaki" />
+
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" x:Uid="Version" Text="バージョン：" />
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="57,20,0,25" TextWrapping="Wrap" x:Name="textBlockVersion" Text=" 1.0.0.0" />
+
+            <HyperlinkButton x:Uid="SoundFilesAgreementTitle" Content="フリー音素材 01SoundEarth"
+                             NavigateUri="http://www.01earth.net/sound" HorizontalAlignment="Left"/>
+            <TextBlock x:Uid="SoundFilesAgreementText" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" Text="本アプリケーションに含まれる音楽ファイルは、「フリー音素材 01SoundEarth」から提供されているものであり、個人利用の定義に基づいて使用しています。この個人利用のライセンスはクリエイティブ・コモンズ・ライセンスの下でライセンスされています。" />
+        </StackPanel>
+
+        <!-- 必要に応じてコンテンツ セクションを以下でさらに定義します -->
+
+    </StackPanel>
+</SettingsFlyout>

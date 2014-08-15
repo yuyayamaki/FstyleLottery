@@ -33,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helper\WavePlayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\efstakun.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\efstalogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\LegendIcon.png" />
     <Content Include="$(MSBuildThisFileDirectory)DataModel\SampleData.json" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\LightGray.png" />
@@ -45,8 +46,8 @@
     <Content Include="$(MSBuildThisFileDirectory)SoundFiles\README.txt" />
     <Content Include="$(MSBuildThisFileDirectory)SoundFiles\b_001.wav" />
     <Content Include="$(MSBuildThisFileDirectory)SoundFiles\ji_017.wav" />
-    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en-US\Resources.resw" />
-    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\ja-JP\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\ja\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Controls\EditItemControl.xaml">

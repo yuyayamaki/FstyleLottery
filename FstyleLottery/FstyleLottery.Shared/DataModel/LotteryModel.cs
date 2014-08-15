@@ -6,6 +6,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Windows.ApplicationModel.Resources;
 
 namespace FstyleLottery.DataModel
 {
@@ -52,13 +53,13 @@ namespace FstyleLottery.DataModel
         private ObservableCollection<LotteryItem> tempNumberLotteryItems;
 
         private ObservableCollection<LotteryItem> defaultTextLotteryItems = new ObservableCollection<LotteryItem>{
-    new LotteryItem("ぽぽぽぽーんな話"),
-    new LotteryItem("震災前後で自分自身が変わったこと"),
-    new LotteryItem("東日本大震災の時どこにいた？どう行動した？"),
-    new LotteryItem("ドキドキした話"),
-    new LotteryItem("涙した話"),
-    new LotteryItem("東北、福島のために何が出来る？何か行動した？"),
-    new LotteryItem("計画停電、節電政策がITに及ぼす影響")};
+    new LotteryItem(new ResourceLoader().GetString("LotteryItem1")),
+    new LotteryItem(new ResourceLoader().GetString("LotteryItem2")),
+    new LotteryItem(new ResourceLoader().GetString("LotteryItem3")),
+    new LotteryItem(new ResourceLoader().GetString("LotteryItem4")),
+    new LotteryItem(new ResourceLoader().GetString("LotteryItem5")),
+    new LotteryItem(new ResourceLoader().GetString("LotteryItem6")),
+    new LotteryItem(new ResourceLoader().GetString("LotteryItem7"))};
 
         private ObservableCollection<LotteryItem> _textLotteryItems;
         public ObservableCollection<LotteryItem> TextLotteryItems

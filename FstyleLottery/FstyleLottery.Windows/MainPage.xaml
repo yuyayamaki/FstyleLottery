@@ -8,8 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:common="using:FstyleLottery.Common"
-    FontFamily="Yu Gothic" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
-
+    FontFamily="Yu Gothic" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}" SizeChanged="Page_SizeChanged">
+    
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton x:Uid="EditItemsAppBarButton" Icon="Edit" Command="{Binding CleanUpCommand}" Click="EditItemsAppBarButton_Click"/>
@@ -22,7 +22,7 @@
     </Page.BottomAppBar>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid>
+        <Grid x:Name="defaultView">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" MinWidth="1024"/>
                 <ColumnDefinition Width="1*"/>
@@ -53,5 +53,34 @@
                 </Grid>
             </Viewbox>
         </Grid>
+
+        <Border x:Name="snapView" Visibility="Collapsed" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Viewbox VerticalAlignment="Center" MaxWidth="600" Margin="20">
+                <StackPanel Margin="0,0,0,40">
+                    <Image Source="Assets/efstalogo.png" HorizontalAlignment="Center"/>
+                    <TextBlock x:Uid="SnapViewMessage" Text="全画面表示に戻してプレイしてください。" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" Margin="0,40,0,0" FontSize="32" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="DefaultLayout">
+                    <!-- The default Visibility properties are set in the XAML that defines the objects. -->
+                </VisualState>
+                <VisualState x:Name="SnapLayout">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="defaultView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="snapView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
     </Grid>
+
 </Page>

@@ -96,5 +96,17 @@ namespace FstyleLottery
         }
 
         #endregion
+
+        private void pageRoot_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width < 835)
+            {
+                VisualStateManager.GoToState(this, "SnapLayout", true);
+            }
+            else
+            {
+                VisualStateManager.GoToState(this, "DefaultLayout", true);
+            }
+        }
     }
 }
